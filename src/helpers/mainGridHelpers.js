@@ -1,7 +1,4 @@
-import logs from '../data/logs';
-import users from '../data/users';
-
-const importUsers = () => {
+const importUsers = users => {
   // importedUsers acts as a hash table w/ user.id as the key
   let importedUsers = {};
 
@@ -24,9 +21,9 @@ const importUsers = () => {
   return importedUsers;
 };
 
-const parseLogs = () => {
+const parseLogs = (users, logs) => {
   // Grabbing user hash table
-  let userData = importUsers();
+  let userData = importUsers(users);
 
   // Iterating through logs, grabbing user and updating revenue and impression/conversion counts.
   // Time stamps for impressions/conversions are also saved.
@@ -34,7 +31,6 @@ const parseLogs = () => {
     let user = userData[log.user_id];
     user[`${log.type}s`].count += 1;
     user[`${log.type}s`].times.push(log.time);
-    //TODO: revenues are being saved as long floats
     user.revenue += log.revenue;
   });
 
@@ -42,4 +38,4 @@ const parseLogs = () => {
   return Object.values(userData);
 };
 
-export { parseLogs };
+export { importUsers, parseLogs };

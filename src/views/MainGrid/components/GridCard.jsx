@@ -7,7 +7,12 @@ const GridCard = props => (
     <p>{props.avatar}</p>
     <p>{props.name}</p>
     <p>{props.occupation}</p>
-    <p>{props.revenue}</p>
+    <p>
+      {new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+      }).format(props.revenue)}
+    </p>
     <p>{props.impressions.count}</p>
     <p>{props.conversions.count}</p>
   </div>
