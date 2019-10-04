@@ -1,9 +1,12 @@
-// import React from 'react';
 import React, { useState } from 'react';
-import GridCard from './components/GridCard';
+// Data and helper functions
 import logs from '../../data/logs';
 import users from '../../data/users';
 import { parseLogs, sortByProp } from '../../helpers/mainGridHelpers';
+
+// Components
+import GridCard from './components/GridCard';
+import StyledMainGridWrapper from './styledComponents/StyledMainGridWrapper';
 
 const userData = parseLogs(users, logs);
 
@@ -19,12 +22,12 @@ const MainGrid = () => {
   };
 
   return (
-    <div>
+    <StyledMainGridWrapper>
       <button onClick={() => changeFilter('name')}>Name</button>
       <button onClick={() => changeFilter('impressions')}>Impressions</button>
       <button onClick={() => changeFilter('conversions')}>Conversions</button>
-      {generateUserCards()}
-    </div>
+      <div className="main-grid">{generateUserCards()}</div>
+    </StyledMainGridWrapper>
   );
 };
 export default MainGrid;
