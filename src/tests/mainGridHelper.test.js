@@ -1,4 +1,4 @@
-import { importUsers, parseLogs } from '../helpers/mainGridHelpers';
+import { importUsers, parseLogs, sortByProp } from '../helpers/mainGridHelpers';
 
 // mock users
 const mockUser = [
@@ -43,5 +43,39 @@ describe('parseLogs', () => {
     expect(user.impressions.times).toHaveLength(1);
     expect(user.conversions.count).toEqual(1);
     expect(user.conversions.times).toHaveLength(1);
+  });
+});
+
+describe('sortByProp', () => {
+  it('should return array of sorted users', () => {
+    let unsortedUsers = [
+      {
+        name: 'Test A',
+        impressions: { count: 0 },
+        conversions: { count: 0 },
+        revenue: 10
+      },
+      {
+        name: 'Test B',
+        impressions: { count: 10 },
+        conversions: { count: 0 },
+        revenue: 0
+      },
+      {
+        name: 'Test C',
+        impressions: { count: 0 },
+        conversions: { count: 10 },
+        revenue: 0
+      }
+    ];
+
+    expect(sortByProp('name', unsortedUsers)[0].name).toEqual('Test A');
+    expect(
+      sortByProp('impressions', unsortedUsers)[0].impressions.count
+    ).toEqual(10);
+    expect(
+      sortByProp('conversions', unsortedUsers)[0].conversions.count
+    ).toEqual(10);
+    expect(sortByProp('name', unsortedUsers)[0].revenue).toEqual(10);
   });
 });

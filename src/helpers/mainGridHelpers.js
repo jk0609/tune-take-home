@@ -38,4 +38,31 @@ const parseLogs = (users, logs) => {
   return Object.values(userData);
 };
 
-export { importUsers, parseLogs };
+// Sorts user data based on property to be sorted on
+const sortByProp = (propName, userData) => {
+  let sortFunction;
+  // Sorts names alphabetically by first name, then last name
+  if (propName === 'name') {
+    sortFunction = (a, b) => {
+      const [firstNameA, lastNameA] = a.name.split(' ');
+      const [firstNameB, lastNameB] = b.name.split(' ');
+      if (firstNameA < firstNameB) return -1;
+      if (firstNameA > firstNameB) return 1;
+      if (lastNameA < lastNameB) return -1;
+      if (lastNameA > lastNameB) return 1;
+      return 0;
+    };
+  }
+  // Sort by descending revenue
+  else if (propName === 'revenue') {
+    sortFunction = (a, b) => b.revenue - a.revenue;
+  }
+  // Sort by either descending impressions or conversions
+  else {
+    sortFunction = (a, b) => b[propName].count - a[propName].count;
+  }
+
+  return userData.sort(sortFunction);
+};
+
+export { importUsers, parseLogs, sortByProp };

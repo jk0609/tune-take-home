@@ -15,7 +15,7 @@ exports[`GridCard snapshot should render correctly 1`] = `
     Test Occupation
   </p>
   <p>
-    100
+    $100.00
   </p>
   <p>
     20
