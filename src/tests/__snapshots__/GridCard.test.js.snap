@@ -1,27 +1,133 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`GridCard snapshot should render correctly 1`] = `
-<div>
-  <h1>
-    GridCard
-  </h1>
-  <p>
-    test-avatar-path
-  </p>
-  <p>
-    Test User
-  </p>
-  <p>
-    Test Occupation
-  </p>
-  <p>
-    $100.00
-  </p>
-  <p>
-    20
-  </p>
-  <p>
-    10
-  </p>
-</div>
+exports[`GridCard snapshot should match snapshot 1`] = `
+<styled.div>
+  <div
+    className="card-header"
+  >
+    <div
+      className="card-avatar"
+    >
+      <img
+        alt="User avatar"
+        onError={[Function]}
+        src="test-avatar-path"
+      />
+    </div>
+    <div
+      className="card-name"
+    >
+      <h4>
+        Test User
+      </h4>
+      <p>
+        Test Occupation
+      </p>
+    </div>
+  </div>
+  <div
+    className="card-body"
+  >
+    <div
+      className="card-graph"
+    >
+      <Line
+        data={
+          Object {
+            "datasets": Array [
+              Object {
+                "backgroundColor": "#000",
+                "borderCapStyle": "butt",
+                "borderColor": "#000",
+                "borderDashOffset": 0,
+                "borderJoinStyle": "miter",
+                "data": Array [
+                  65,
+                  59,
+                  80,
+                  81,
+                  56,
+                  55,
+                  40,
+                ],
+                "fill": false,
+                "label": "Conversions",
+                "pointHitRadius": 10,
+                "pointHoverBorderWidth": 2,
+                "pointRadius": 1,
+              },
+            ],
+            "labels": Array [
+              "January",
+              "February",
+              "March",
+              "April",
+              "May",
+              "June",
+              "July",
+            ],
+            "options": Object {
+              "legend": Object {
+                "display": false,
+              },
+            },
+          }
+        }
+        options={
+          Object {
+            "legend": Object {
+              "display": false,
+            },
+            "scales": Object {
+              "xAxes": Array [
+                Object {
+                  "display": false,
+                },
+              ],
+              "yAxes": Array [
+                Object {
+                  "display": false,
+                },
+              ],
+            },
+          }
+        }
+      />
+      <span
+        className="graph-label"
+      >
+        Label
+      </span>
+    </div>
+    <div
+      className="card-metrics"
+    >
+      <p
+        className="impressions-count"
+      >
+        20
+      </p>
+      <p
+        className="impressions-label"
+      >
+        impressions
+      </p>
+      <p
+        className="conversions-count"
+      >
+        10
+      </p>
+      <p
+        className="conversions-label"
+      >
+        conversions
+      </p>
+      <p
+        className="revenue-count"
+      >
+        $100.00
+      </p>
+    </div>
+  </div>
+</styled.div>
 `;

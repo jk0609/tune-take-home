@@ -10,7 +10,6 @@ const GridCard = props => {
 
   // generates a random background color for the blank avatar background
   const colors = ['red', 'yellow', 'blue', 'orange', 'green', 'purple', 'pink'];
-  const color = colors[Math.floor(Math.random() * colors.length)];
 
   // Graphic configs
   const graphOptions = {
@@ -47,7 +46,7 @@ const GridCard = props => {
   };
 
   return (
-    <StyledGridCardWrapper avatarColor={color}>
+    <StyledGridCardWrapper>
       <div className="card-header">
         <div className="card-avatar">
           {/* onError contains error handling for avatar images that are returning 403 responses */}
@@ -58,7 +57,14 @@ const GridCard = props => {
               onError={() => setImageError(true)}
             />
           ) : (
-            <span>{props.name[0]}</span>
+            <span
+              style={{
+                backgroundColor:
+                  colors[Math.floor(Math.random() * colors.length)]
+              }}
+            >
+              {props.name[0]}
+            </span>
           )}
         </div>
         <div className="card-name">

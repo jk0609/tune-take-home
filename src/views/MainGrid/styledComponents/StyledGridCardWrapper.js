@@ -26,7 +26,6 @@ export default styled.div`
         justify-content: center;
         align-items: center;
         color: #fff;
-        background-color: ${props => props.avatarColor};
         font-size: 1.6em;
         font-weight: 550;
       }
