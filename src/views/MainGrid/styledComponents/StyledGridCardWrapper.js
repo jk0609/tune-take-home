@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export default styled.div`
-  width: 250px;
-  height: 150px;
+  width: 290px;
+  height: 175px;
   padding: 10px;
   border: 2px solid #000;
   border-radius: 10px;
@@ -14,11 +14,21 @@ export default styled.div`
     .card-avatar {
       width: 25%;
 
-      > img,
+      img,
       span {
         border-radius: 50%;
         height: 50px;
         width: 50px;
+      }
+
+      span {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+        background-color: ${props => props.avatarColor};
+        font-size: 1.6em;
+        font-weight: 550;
       }
     }
 
@@ -46,6 +56,12 @@ export default styled.div`
 
     .card-graph {
       width: 60%;
+      text-align: center;
+
+      .graph-label {
+        font-size: 11px;
+        margin: auto;
+      }
     }
 
     .card-metrics {
@@ -73,6 +89,7 @@ export default styled.div`
       .impressions-label,
       .conversions-label {
         font-size: 0.8em;
+        color: grey;
       }
 
       .revenue-count {

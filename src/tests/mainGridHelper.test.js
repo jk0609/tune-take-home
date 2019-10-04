@@ -29,7 +29,7 @@ const mockLogs = [
 
 describe('importUsers', () => {
   it('should return a hash table of users populated with users from users.json', () => {
-    let user = importUsers(mockUser)[0];
+    let [user] = importUsers(mockUser);
     expect(user.name).toEqual('Test User');
     expect(user.occupation).toEqual('Test occupation');
   });
@@ -37,7 +37,7 @@ describe('importUsers', () => {
 
 describe('parseLogs', () => {
   it('should return an array of users populated with revenue, impressions and conversion data', () => {
-    let user = parseLogs(mockUser, mockLogs)[0];
+    let [user] = parseLogs(mockUser, mockLogs);
     expect(user.revenue).toEqual(15);
     expect(user.impressions.count).toEqual(1);
     expect(user.impressions.times).toHaveLength(1);
