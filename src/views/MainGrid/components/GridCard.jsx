@@ -5,7 +5,14 @@ import { Line } from 'react-chartjs-2';
 
 import StyledGridCardWrapper from '../styledComponents/StyledGridCardWrapper';
 
-const GridCard = props => {
+const GridCard = ({
+  avatar,
+  name,
+  occupation,
+  revenue,
+  impressions,
+  conversions
+}) => {
   const [imageError, setImageError] = useState(false);
 
   // generates a random background color for the blank avatar background
@@ -16,33 +23,25 @@ const GridCard = props => {
     legend: {
       display: false
     },
-    scales: { xAxes: [{ display: false }], yAxes: [{ display: false }] }
+    scales: { xAxes: [{ display: false }], yAxes: [{ display: false }] },
+    layout: {
+      padding: 5
+    }
   };
 
+  let sortedDates = Object.keys(conversions.graphData).sort();
   const graphData = {
-    // TODO: last two weeks of days
-    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    labels: sortedDates,
     datasets: [
       {
-        label: 'Conversions',
         fill: false,
         backgroundColor: '#000',
         borderColor: '#000',
-        borderCapStyle: 'butt',
-        borderDashOffset: 0.0,
-        borderJoinStyle: 'miter',
-        pointHoverBorderWidth: 2,
         pointRadius: 1,
         pointHitRadius: 10,
-        // TODO: total revenue for each day
-        data: [65, 59, 80, 81, 56, 55, 40]
+        data: sortedDates.map(day => conversions.graphData[day].toFixed(2))
       }
-    ],
-    options: {
-      legend: {
-        display: false
-      }
-    }
+    ]
   };
 
   return (
@@ -50,9 +49,9 @@ const GridCard = props => {
       <div className="card-header">
         <div className="card-avatar">
           {/* onError contains error handling for avatar images that are returning 403 responses */}
-          {props.avatar && !imageError ? (
+          {avatar && !imageError ? (
             <img
-              src={props.avatar}
+              src={avatar}
               alt="User avatar"
               onError={() => setImageError(true)}
             />
@@ -63,31 +62,32 @@ const GridCard = props => {
                   colors[Math.floor(Math.random() * colors.length)]
               }}
             >
-              {props.name[0]}
+              {name[0]}
             </span>
           )}
         </div>
         <div className="card-name">
-          <h4>{props.name}</h4>
-          <p>{startCase(props.occupation)}</p>
+          <h4>{name}</h4>
+          <p>{startCase(occupation)}</p>
         </div>
       </div>
       <div className="card-body">
         <div className="card-graph">
           <Line data={graphData} options={graphOptions} />
-          {/* TODO: Date range */}
-          <span className="graph-label">Label</span>
+          <span className="graph-label">{`Daily Revenue: ${sortedDates[0]} - ${
+            sortedDates[sortedDates.length - 1]
+          }`}</span>
         </div>
         <div className="card-metrics">
-          <p className="impressions-count">{props.impressions.count}</p>
+          <p className="impressions-count">{impressions}</p>
           <p className="impressions-label">impressions</p>
-          <p className="conversions-count">{props.conversions.count}</p>
+          <p className="conversions-count">{conversions.count}</p>
           <p className="conversions-label">conversions</p>
           <p className="revenue-count">
             {new Intl.NumberFormat('en-US', {
               style: 'currency',
               currency: 'USD'
-            }).format(props.revenue)}
+            }).format(revenue)}
           </p>
         </div>
       </div>
@@ -100,7 +100,7 @@ GridCard.propTypes = {
   name: PropTypes.string,
   occupation: PropTypes.string,
   revenue: PropTypes.number,
-  impressions: PropTypes.object,
+  impressions: PropTypes.number,
   conversions: PropTypes.object
 };
 

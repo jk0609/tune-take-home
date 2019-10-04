@@ -25,6 +25,12 @@ const mockLogs = [
     type: 'conversion',
     user_id: mockId,
     revenue: 15
+  },
+  {
+    time: '2013-04-19 15:26:30',
+    type: 'conversion',
+    user_id: mockId,
+    revenue: 8
   }
 ];
 
@@ -39,11 +45,10 @@ describe('importUsers', () => {
 describe('parseLogs', () => {
   it('should return an array of users populated with revenue, impressions and conversion data', () => {
     let user = parseLogs(mockUser, mockLogs)[0];
-    expect(user.revenue).toEqual(15);
-    expect(user.impressions.count).toEqual(1);
-    expect(user.impressions.times).toHaveLength(1);
-    expect(user.conversions.count).toEqual(1);
-    expect(user.conversions.times).toHaveLength(1);
+    expect(user.revenue).toEqual(23);
+    expect(user.impressions).toEqual(1);
+    expect(user.conversions.count).toEqual(2);
+    expect(user.conversions.graphData).toEqual({ '04/19': 23 });
   });
 });
 
@@ -52,28 +57,26 @@ describe('sortByProp', () => {
     let unsortedUsers = [
       {
         name: 'Test A',
-        impressions: { count: 0 },
+        impressions: 0,
         conversions: { count: 0 },
         revenue: 10
       },
       {
         name: 'Test B',
-        impressions: { count: 10 },
+        impressions: 10,
         conversions: { count: 0 },
         revenue: 0
       },
       {
         name: 'Test C',
-        impressions: { count: 0 },
+        impressions: 0,
         conversions: { count: 10 },
         revenue: 0
       }
     ];
 
     expect(sortByProp('name', unsortedUsers)[0].name).toEqual('Test A');
-    expect(
-      sortByProp('impressions', unsortedUsers)[0].impressions.count
-    ).toEqual(10);
+    expect(sortByProp('impressions', unsortedUsers)[0].impressions).toEqual(10);
     expect(
       sortByProp('conversions', unsortedUsers)[0].conversions.count
     ).toEqual(10);

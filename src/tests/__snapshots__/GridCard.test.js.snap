@@ -37,44 +37,21 @@ exports[`GridCard snapshot should match snapshot 1`] = `
             "datasets": Array [
               Object {
                 "backgroundColor": "#000",
-                "borderCapStyle": "butt",
                 "borderColor": "#000",
-                "borderDashOffset": 0,
-                "borderJoinStyle": "miter",
-                "data": Array [
-                  65,
-                  59,
-                  80,
-                  81,
-                  56,
-                  55,
-                  40,
-                ],
+                "data": Array [],
                 "fill": false,
-                "label": "Conversions",
                 "pointHitRadius": 10,
-                "pointHoverBorderWidth": 2,
                 "pointRadius": 1,
               },
             ],
-            "labels": Array [
-              "January",
-              "February",
-              "March",
-              "April",
-              "May",
-              "June",
-              "July",
-            ],
-            "options": Object {
-              "legend": Object {
-                "display": false,
-              },
-            },
+            "labels": Array [],
           }
         }
         options={
           Object {
+            "layout": Object {
+              "padding": 5,
+            },
             "legend": Object {
               "display": false,
             },
@@ -96,7 +73,7 @@ exports[`GridCard snapshot should match snapshot 1`] = `
       <span
         className="graph-label"
       >
-        Label
+        Daily Revenue: undefined - undefined
       </span>
     </div>
     <div

@@ -52,6 +52,7 @@ export default styled.div`
 
   .card-body {
     display: flex;
+    padding-top: 5px;
 
     .card-graph {
       width: 60%;

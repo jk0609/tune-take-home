@@ -17,13 +17,10 @@ let mockProps = {
   name: 'Test User',
   occupation: 'Test Occupation',
   revenue: 100,
-  impressions: {
-    count: 20,
-    times: new Array(20).map(e => '')
-  },
+  impressions: 20,
   conversions: {
     count: 10,
-    times: new Array(10).map(e => '')
+    graphData: {}
   }
 };
 
