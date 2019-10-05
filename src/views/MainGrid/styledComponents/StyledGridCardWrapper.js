@@ -28,6 +28,7 @@ export default styled.div`
         color: #fff;
         font-size: 1.6em;
         font-weight: 550;
+        margin: auto;
       }
     }
 

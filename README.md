@@ -1,5 +1,12 @@
 Take home assignment for TUNE application. Displays user cards with avatar, user metrics and line graph. Data sourced from provided JSON files. Bootstrapped with Create React App.
 
+### Directory
+
+- `src/data` contains raw JSON files provided by TUNE.
+- `src/helpers` contains helper functions that parse/sort JSON data for consumption by front end.
+- `src/views` contains main front end components and styled components.
+- `src/tests` contains unit tests and component snapshots.
+
 ### Setup
 
 - Run `npm install`
@@ -9,4 +16,3 @@ Take home assignment for TUNE application. Displays user cards with avatar, user
 ### Tests
 
 - `npm run test` will launch the Jest test suite.
-- Unit tests for helper functions and snapshot tests for components are located in `./src/tests`

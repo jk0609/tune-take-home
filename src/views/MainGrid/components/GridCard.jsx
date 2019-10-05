@@ -18,7 +18,7 @@ const GridCard = ({
   // generates a random background color for the blank avatar background
   const colors = ['red', 'yellow', 'blue', 'orange', 'green', 'purple', 'pink'];
 
-  // Graphic configs
+  // Graph configs
   const graphOptions = {
     legend: {
       display: false
@@ -29,6 +29,7 @@ const GridCard = ({
     }
   };
 
+  // sortedDates is an array of sorted date strings in MM/DD format
   let sortedDates = Object.keys(conversions.graphData).sort();
   const graphData = {
     labels: sortedDates,
